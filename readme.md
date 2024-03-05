@@ -27,19 +27,19 @@ Limiting factor is probably channel overhead since using `_ = scanner.Text()` re
 
 ### Default Buf Reader
 Without any optimizations
-- 80516980 ms / 80.5169806 s
+- 80516980ms / 80.5169806s
 
 ### Scanner 1 _000 Buffer 1_000 Lines Chunks
-- 41649197 ms / 41.6491979 s
+- 41649197ms / 41.6491979s
 
 Using `batch = make([]string, DATA_CHAN_CHUNKSIZE)` instead of `batch = nil` tanks the performance of the program. Why exactly is unkown, i havent looked it up.
 
 ### File Chunking 1k Buffer 1MB IO Chunk 
-- 9632183 ms / 9.6321835 s
+- 9632183ms / 9.6321835s
 
 But this has bugs because no new underlying arrays are beeing created.
 
-- 13217743 ms / 13.2177437 s
+- 13217743ms / 13.2177437s
 
 Creating a new buffer on each iteration.
 
